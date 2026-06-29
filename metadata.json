@@ -1,0 +1,6 @@
+{
+  "name": "Intervene AI",
+  "description": "A cinematic, goth-dark productivity operating system. Don't wait. Intervene.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

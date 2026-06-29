@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:wght@900&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: 'Playfair Display', serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-fell: 'IM Fell English', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-inter: 'Inter', sans-serif;
+  --font-jp: 'Noto Serif JP', serif;
+  
+  --color-void: var(--void);
+  --color-abyss: var(--abyss);
+  --color-crypt: var(--crypt);
+  --color-dusk: var(--dusk);
+  --color-violet: var(--violet);
+  --color-orchid: var(--orchid);
+  --color-amethyst: var(--amethyst);
+  --color-silver: var(--silver);
+  --color-mist: var(--mist);
+  
+  --animate-spin-slow: spin 30s linear infinite;
+  --animate-spin-slow-reverse: spin-reverse 30s linear infinite;
+  --animate-bell-ring: bellRing 0.4s ease-in-out infinite alternate;
+  --animate-pulse-slow: pulse 3s ease-in-out infinite;
+}
+
+:root {
+  --void:       #05060D;   /* page background */
+  --abyss:      #0A0C18;   /* card backgrounds */
+  --crypt:      #10132A;   /* elevated surfaces, modals */
+  --dusk:       #1A1D38;   /* hover fills, dividers */
+  --violet:     #7B5EA7;   /* primary accent */
+  --orchid:     #A78BFA;   /* highlights, active states */
+  --amethyst:   #C084FC;   /* gradients */
+  --silver:     #C8CCDE;   /* primary text */
+  --mist:       #7A7F9A;   /* secondary text */
+  --ghost:      rgba(200,204,222,0.06);
+  --glow-v:     rgba(167,139,250,0.18);
+  --glow-a:     rgba(192,132,252,0.12);
+  --border:     rgba(167,139,250,0.14);
+  --border-hot: rgba(167,139,250,0.35);
+
+  /* Accent splashes */
+  --gold:   #E8C86A;
+  --rose:   #E07090;
+  --teal:   #5CCFBE;
+  --sage:   #7EC8A0;
+}
+
+body {
+  background: radial-gradient(ellipse at 20% 50%, rgba(123,94,167,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(192,132,252,0.05) 0%, transparent 50%),
+              #05060D;
+  color: var(--silver);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hot);
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bellRing {
+  from {
+    transform: rotate(-15deg);
+  }
+  to {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Wave visualizer animation */
+@keyframes wave-height {
+  0% {
+    height: 4px;
+  }
+  100% {
+    height: 20px;
+  }
+}
+
+.wave-bar {
+  animation: wave-height 0.5s ease-in-out infinite alternate;
+}
+
+/* Starfield canvas overlay style */
+#cosmos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ensure no italics anywhere unless explicitly on the binaural screen */
+#screen-binaural {
+  font-style: italic;
+}
+
+/* Typography styles */
+.logo-font {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: normal !important;
+  letter-spacing: 0.05em;
+}
+
+.logo-elegant-font {
+  font-family: 'Cormorant Garamond', 'Cinzel', serif;
+  font-weight: 500;
+  font-style: normal !important;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.3);
+}
+
+.h1-font {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: normal !important;
+  letter-spacing: 0.05em;
+}
+
+.fell-font {
+  font-family: 'IM Fell English', serif;
+  font-weight: 400;
+  font-style: normal !important;
+}
+
+.cormorant-font {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: normal !important;
+}
+
+.mono-font {
+  font-family: 'Space Mono', monospace;
+  font-style: normal !important;
+}
+
+/* Italic rules for Binaural Beats screen */
+.italic-fell {
+  font-family: 'IM Fell English', serif;
+  font-weight: 400;
+  font-style: italic !important;
+}
+
+.italic-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: italic !important;
+}
+
+.eyebrow-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
+/* Glowing text and boxes */
+.glow-text-orchid {
+  text-shadow: 0 0 20px rgba(167,139,250,0.4);
+}
+
+.glow-text-rose {
+  text-shadow: 0 0 20px rgba(224,112,144,0.4);
+}
+
+.glow-box-orchid {
+  box-shadow: 0 0 30px rgba(167,139,250,0.15);
+}
+
+.glow-box-rose {
+  box-shadow: 0 0 30px rgba(224,112,144,0.15);
+}
+
+/* Inputs styling */
+.dark-input {
+  background: var(--abyss);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--silver);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.dark-input:focus {
+  border-color: var(--border-hot);
+  box-shadow: 0 0 0 3px rgba(167,139,250,0.1);
+}
+
+/* Pill buttons */
+.pill-btn-gradient {
+  background: linear-gradient(135deg, var(--violet), var(--amethyst));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 20px rgba(167,139,250,0.2);
+}
+
+.pill-btn-gradient:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(167,139,250,0.4);
+  transform: translateY(-1px);
+}
+
+.pill-btn-gradient:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pill-btn-rose {
+  background: linear-gradient(135deg, var(--rose), var(--violet));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 20px rgba(224,112,144,0.2);
+}
+
+.pill-btn-rose:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(224,112,144,0.4);
+  transform: translateY(-1px);
+}
+
+.pill-btn-rose:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pill-btn-secondary {
+  background: transparent;
+  color: var(--silver);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.pill-btn-secondary:hover:not(:disabled) {
+  background: var(--ghost);
+  border-color: var(--border-hot);
+  color: white;
+}
+
+/* Card hover animation */
+.glass-card {
+  background: var(--abyss);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  transition: all 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-hot);
+  box-shadow: 0 4px 24px rgba(167,139,250,0.08);
+}
+
+/* Animations slide in / fade in */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideInFromRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease forwards;
+}
